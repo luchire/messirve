@@ -153,6 +153,7 @@ Hay dos conceptos importantes:
 emitters (emisores): objetos que emiten eventos nombrados y llaman a funciones especificas. son instancias de la clase EventEmitter
 tienen un metodo .on() para asociar una funcion al evento. y esa funcion se denomina EventHandler 
 */
+/*
 //modulo events: definir, emitir, escuchar
 // primero incluyo el modulo
 const EventEmitter = require("events");
@@ -171,6 +172,7 @@ emisorProductos.on("compra", (total) => {
 
 emisorProductos.emit("compra", 500); //tomamos el emisor (emisorProductos) y digo que cuando ocurra una compra llamamos a emit y se ejecuta esa linea, va a ejecutar lo q le dije en emisorProductos.on()
 
+*/
 //PROMESAS EN JS
 //Objeto que representa el eventual resultado o error de una operacion asincrona
 //una promesa es un OBJETO de js. y ese objeto se asocia a una callback function
@@ -203,6 +205,7 @@ const manejarPromesaRechazada = (razonRechazo) => {
 
 miPromesa.then(manejarPromesaCumplida, manejarPromesaRechazada);
 */
+/*
 //ejemplo:
 const estatusPedido = () => {
     const estatus = Math.random() < 0.8;
@@ -306,3 +309,23 @@ function ordenarProducto(producto) {
   
   realizarPedido('taza');
   // realizarPedido('lapiz');
+*/
+
+  ////////////////////////////////
+  //Primer servidor con node.js:
+  const http = require("http");
+  //creo una constante para almacenar el servidor.uso el metodo createServer, con el creo un servidor y cdo se lo llame va a ejecutar la funcion que le pase dentro de los ():
+    const servidor = http.createServer((req, res) => {
+      console.log("solicitud nueva")
+      res.end("Hola Mundo"); //este metodo nos permite enviar una respuesta una vez que termina todo el proceso 
+    });
+
+  //puerto: ubicacion virtual del sis operativo en la cual se puede acceder a una app o a un proceso especifico que se este ejecutando en ese puerto. 
+  //se usan numeros enteros positivos, en este caso usamos 3000
+  
+  //para que ese servidor que creamos  "escuche" nuestras solicitudes:
+  const puerto = 3000;
+  servidor.listen(puerto, () => {
+    console.log(`el servidor esta escuchando en http://localhost:${puerto}`);
+  });
+  //para ejecutarlo primero ingreso al terminal y escribo node y el nombre de nuestro archivo, y luego entro al navegador y escribo: localhost:3000
