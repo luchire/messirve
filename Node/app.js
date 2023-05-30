@@ -10,8 +10,8 @@
 //console.log(saludos.saludarHolaMundo());
 
 //sintaxis de desestructuracion: me permite tomar ciertas propiedades de mi objeto js
-const {saludarHolaMundo} = require("./saludos.js");
-console.log(saludarHolaMundo());
+//const {saludarHolaMundo} = require("./saludos.js");
+//console.log(saludarHolaMundo());
 
 //MODULOS BUILT-IN (incorporados)
 /*console.log; console.warn; console.error
@@ -310,7 +310,7 @@ function ordenarProducto(producto) {
   realizarPedido('taza');
   // realizarPedido('lapiz');
 */
-
+/*
   ////////////////////////////////
   //Primer servidor con node.js:
   const http = require("http");
@@ -329,3 +329,51 @@ function ordenarProducto(producto) {
     console.log(`el servidor esta escuchando en http://localhost:${puerto}`);
   });
   //para ejecutarlo primero ingreso al terminal y escribo node y el nombre de nuestro archivo, y luego entro al navegador y escribo: localhost:3000
+*/
+
+  ///////////////////////
+  //MODULO URL: creo una URL
+  //const miURL = new URL ("https://www.ejemplo.org/cursos/programacion?ordenar=vistas&nivel=1");
+  //console.log(miURL.hostname); //www.ejemplo.org
+  //console.log(miURL.pathname); // /cursos/programacion
+  //console.log(miURL.searchParams); //URLSearchParams { 'ordenar' => 'vistas', 'nivel' => '1' }
+  
+  //ROUTING EN NODE.JS : manejar las solicitudes del cliente en base a ciertos criterios especificos (metodo y camino)
+  //criterios: 1-Metodo: el metodo de la solicitud http. de esta forma el servidor sabe que tipo de operacion se realizara (GET, PUT, POST, DELETE)
+  //           2-Path(camino): el path de la solicitud http. de esta forma el servidor sabe que recurso especifico se usara
+  //una ruta se compone de metodo+path+como manejar esa solicitud
+  //se usa expresspara routing pq es mas simple que con node
+
+
+
+  ///////////////////////////
+  //EXPRESS: Framework de Node. nos ayuda a desarrollar aplicaciones con node
+  /*Conceptos basicos:
+  CRUD: Operaaciones basicas que se puede realizar con una abse de datos.
+  API: Interfaz de software que permite que dos apps se comuniquen entre si. no son usadaspor el usuario, sino por el programador que usa la api para implementar el programa. 
+  es la conexion entre cliente y servidor */
+
+  //primer proyecto con express (primera api)
+  //primero creo la carpeta, abro new terminal y hago npm init y doy enter a todo, ahi se crea el archivo package.json
+  //segundo instalo express con npm install express
+
+const express = require("express"); //exportamos express con require. con esto creamos una app de express
+const app = express(); //a esa funcoin express se la asigno a app
+const {infoCursos} = require ("./cursos.js");
+
+//routing
+//app.get("/", (req,res)=>{})
+app.get ("/", (req, res) => {
+  res.send("mi primer servidor");
+})
+const PUERTO = process.env.PORT || 3000; //process.env.PORT CONSIGUE EL VALOR DEL PUERTO CDO NO ESTA DEFINIDO
+app.listen(PUERTO, () => {
+  console.log(`el servidor esta escuchando en el puerto http://localhost:${PUERTO}`);
+})
+
+app.get("/Node/cursos", (req, res) => {
+  res.send(infoCursos);
+  res.send(JSON.stringify(infoCursos));
+})
+
+app.get("/api/cursos/")
