@@ -359,7 +359,8 @@ function ordenarProducto(producto) {
 
 const express = require("express"); //exportamos express con require. con esto creamos una app de express
 const app = express(); //a esa funcoin express se la asigno a app
-const {infoCursos} = require ("./cursos.js");
+const {infoCursos} = require ("./cursos");
+//console.log(infoCursos);
 
 //routing
 //app.get("/", (req,res)=>{})
@@ -371,9 +372,42 @@ app.listen(PUERTO, () => {
   console.log(`el servidor esta escuchando en el puerto http://localhost:${PUERTO}`);
 })
 
-app.get("/Node/cursos", (req, res) => {
-  res.send(infoCursos);
+app.get("/api/cursos", (req, res) => {
+  //res.send(infoCursos);
   res.send(JSON.stringify(infoCursos));
 })
 
-app.get("/api/cursos/")
+app.get("/api/cursos/programacion", (req, res) => {
+  res.send(JSON.stringify(infoCursos.programacion));
+})
+
+app.get("/api/cursos/matematicas", (req, res) => {
+  res.send(JSON.stringify(infoCursos.matematicas));
+})
+
+
+//ROUTERS EN EXPRESS
+//Rehuso el path inicial para no repetirlo todo el tiempo
+
+const router = express.Router();
+app.use("api/cursos", router);
+
+//entonces en vez de:
+app.get("/api/cursos/programacion", (req, res) => {
+  res.send(JSON.stringify(infoCursos.programacion));
+});
+
+app.get("/api/cursos/matematicas", (req, res) => {
+  res.send(JSON.stringify(infoCursos.matematicas));
+});
+
+//escribiria:
+router.get("/programacion", (req, res) => {
+  res.send(JSON.stringify(infoCursos.programacion));
+});
+
+router.get("/matematicas", (req, res) => {
+  res.send(JSON.stringify(infoCursos.matematicas));
+});
+
+//Routers en distintos archivos 
