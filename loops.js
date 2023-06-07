@@ -51,3 +51,20 @@ var cadena = "Hola Mundo";
 for(const caracter of cadena){
     console.log(caracter);
 }
+
+//para recorrer objetos uso for in donde recorro cada key 
+// for..in
+    /*
+    const filteredInternList = {}
+    for (var k in contentInternList){
+        if (contentInternList[k].checkinTime && contentInternList[k].checkinTime === checkinTime){
+            filteredInternList[k] = contentInternList[k];
+        }
+    }
+    */
+//lo anterior puedo hacerlo mejor usando arrays. transformo el objeto en un array de arrays con object.fromentries y object.entries
+    // array filter
+    const filteredInternList = Object.fromEntries(
+        Object.entries(contentInternList).filter(e => queryFilterForIntern(e, queryParams))
+    )
+    return res.send(filteredInternList)
