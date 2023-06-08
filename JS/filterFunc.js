@@ -38,3 +38,8 @@ function filterFunc (e){
 }
 // SI LO TRANSFORMAMOS EN FUNCION FLECHA PODEMOS SACAR LAS LLAVES
 const filterFuncFlecha  = (e) => (!urgentFilter.checked || e.urgent) && (true);
+
+//filter array
+a = ["vaca", "huevo", "carton"]
+
+console.log(a.filter(e => e.name.includes("a")));
