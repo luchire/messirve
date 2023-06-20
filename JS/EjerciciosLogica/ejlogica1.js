@@ -48,7 +48,7 @@ cadenaArreglo();
 
 
 //4) Programa una función que repita un texto X veces, pe. miFuncion('Hola Mundo', 3) devolverá Hola Mundo Hola Mundo Hola Mundo.
-
+/*
 const repetirTexto = (texto = "", veces = undefined) =>{
     //validaciones:
     if(!texto) return console.warn ("No ingresaste texto");
@@ -66,3 +66,4 @@ repetirTexto();
 repetirTexto("HOLA MUNDO");
 repetirTexto("HOLA MUNDO", 0);
 repetirTexto("HOLA MUNDO", -20);
+*/
