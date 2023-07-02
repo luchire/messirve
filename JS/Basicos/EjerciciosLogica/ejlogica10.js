@@ -1,4 +1,6 @@
- /*27) Programa una clase llamada Pelicula.
+ console.clear();
+ /*
+ 27) Programa una clase llamada Pelicula.
 
 La clase recibirá un objeto al momento de instanciarse con los siguentes datos: id de la película en IMDB, titulo, director, año de estreno, país o países de origen, géneros y calificación en IMBD.
   - Todos los datos del objeto son obligatorios.
@@ -19,10 +21,10 @@ La clase recibirá un objeto al momento de instanciarse con los siguentes datos:
     instancias de la clase de forma automatizada e imprime la ficha técnica 
     de cada película.
 
-* Géneros Aceptados: Action, Adult, Adventure, Animation, Biography, Comedy, Crime, Documentary ,Drama, Family, Fantasy, Film Noir, Game-Show, History, Horror, Musical, Music, Mystery, News, Reality-TV, Romance, Sci-Fi, Short, Sport, Talk-Show, Thriller, War, Western.
+  //* Géneros Aceptados: Action, Adult, Adventure, Animation, Biography, Comedy, Crime, Documentary ,Drama, Family, Fantasy, Film Noir, Game-Show, History, Horror, Musical, Music, Mystery, News, Reality-TV, Romance, Sci-Fi, Short, Sport, Talk-Show, Thriller, War, Western.
 */
 class Pelicula{
-  constructor((id, titulo, director, estreno, pais, generos, calificacion)){
+  constructor({id, titulo, director, estreno, pais, generos, calificacion}){
     this.id = id;
     this.titulo = titulo;
     this.director = director;
@@ -42,6 +44,3 @@ class Pelicula{
 
   }
 }
-const peli = new Pelicula{{
-
-}}
